@@ -3,9 +3,9 @@ package hello;
 public class ForExample {
 	public static void main(String[] args) {
 				
-		for(int i = 1; i <= 10; i++) {
-			for(int b = 1; b <= 10; b++)
-		System.out.println(i+" * "+b+" = "+(i * b));
+		for(int i = 2; i <= 9; i++) {
+			for(int j = 1; j <= 9; j++)
+		System.out.println(i+" * "+j+" = "+(i * j));
 		   
 		}			
 	}

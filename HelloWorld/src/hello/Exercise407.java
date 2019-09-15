@@ -1,6 +1,6 @@
 package hello;
 
-import java.util.Scanner;
+import java.util.Scanner; //외부 패키지의 클래스를 불러옴.
 public class Exercise407 {
 public static void main(String[] args) {
 	boolean run = true;
@@ -15,15 +15,17 @@ public static void main(String[] args) {
 		System.out.println("-------------------------------");
 		System.out.print("선택> ");
 		
-		balance = scanner.nextInt();
+		int cb = scanner.nextInt();
 		
-		if(balance == 1) {
-			System.out.println("예금액> 10000");
-		} else if(balance == 2) {
-			System.out.println("출급액> 2000");
-		} else if(balance == 3) {
-			System.out.println("잔고> 8000");
-		} else if(balance == 4) {
+		if(cb == 1) {
+			System.out.print("예금액> ");
+			balance += scanner.nextInt();
+		} else if(cb == 2) {
+			System.out.print("출급액> ");
+			balance -= scanner.nextInt();
+		} else if(cb == 3) {
+			System.out.println("잔고> "+balance);
+		} else if(cb == 4) {
 			run = false;
 		}
 		

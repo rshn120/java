@@ -7,7 +7,7 @@ public static void main(String[] args) {
 	
 	double z = x%y;
 	
-	if(Double.isNaN(z)) {
+	if(Double.isNaN(z)) { //z값이 NaN이면 True
 		System.out.println("0.0으로 나눌 수 없습니다.");
 	}
 	else {

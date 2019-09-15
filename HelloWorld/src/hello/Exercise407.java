@@ -15,7 +15,16 @@ public static void main(String[] args) {
 		System.out.println("-------------------------------");
 		System.out.println("선택> ");
 		
-		
+		balance = scanner.nextInt();
+		if(balance == 1) {
+			System.out.println("예금액> 10000");
+		} else if(balance == 2) {
+			System.out.println("출급액> 2000");
+		} else if(balance == 3) {
+			System.out.println("잔고> 8000");
+		} else if(balance == 4) {
+			run = false;
+		}
 		
 		
 	}

@@ -5,7 +5,7 @@ public static void main(String[] args) {
 	int lengthTop = 5;
 	int lengthBottom = 10;
 	int height = 7;
-	double area = (7*(lengthTop+lengthBottom)/2);
+	double area = (((lengthTop+lengthBottom)*7)/2);
 	System.out.println(area);
 }
 }

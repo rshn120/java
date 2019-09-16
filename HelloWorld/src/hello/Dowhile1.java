@@ -16,6 +16,7 @@ public class Dowhile1 {
 		} while( ! inputString.contentEquals("q"));
 		System.out.println();
 		System.out.println("종료");
-	}
+		scanner.close();
+	} 
 
 }

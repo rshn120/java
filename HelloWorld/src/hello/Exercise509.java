@@ -41,14 +41,14 @@ public class Exercise509 {
 					if(scr[i]>max) //입력 받은 점수가 max값보다 클때 까지 돌아~
 						max = scr[i]; //가장 큰 점수를 맥스에 넣어라 표현하기가 애메하네
 				}
-				avg=(double)sum/stdn; //총합 나누기 학생수 소수점때문에  int형 sum을 double로 변환 이거 안하면 오류
+				avg=(double)sum/stdn; //총합 나누기 학생수 소수점때문에  int 형 sum을 double로 변환 이거 안하면 오류
 				System.out.println("최고 점수: "+max);
 				System.out.println("평균 점수: "+avg);
 			} 
 			
-			else if(selectNo == 5) {   //5 종료
+			else if(selectNo == 5) {   //5  종료
 				run = false;
-				System.out.println("프로그램 종료");			
+				System.out.println(" 프로그램 종료 ");			
 			}	
 			}sc.close();
 		}

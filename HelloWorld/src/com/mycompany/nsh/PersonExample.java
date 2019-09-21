@@ -17,7 +17,7 @@ public class PersonExample {
 		Scanner sc = new Scanner(System.in);
 		 String name;
 		 int a;
-		 double w, h;
+		 double h=0.0, w = 0.0;
 		 System.out.println("이름 ? ");
 		 name = sc.next();
 		p1.setName(name);
@@ -27,14 +27,16 @@ public class PersonExample {
 		p1.setAge(a);
 		
 		System.out.println("키는? ");
-		h=sc.nextDouble();
+		h = sc.nextDouble();
 		p1.setHeight(h);
 		
 		System.out.println("몸무게 ? ");
-		w=sc.nextDouble();
-		p1.setHeight(w);
+		w = sc.nextDouble();
+		p1.setWeight(w);
 		
-		System.out.println(p1.getName()+p1.getAge()+p1.getHeight()+p1.getWeight());
-		
+		System.out.println("이름 : "+p1.getName());
+		System.out.println("나이 : "+p1.getAge());
+		System.out.println("키 : "+p1.getHeight());
+		System.out.println("몸무게 : "+p1.getWeight());
 	}
 }

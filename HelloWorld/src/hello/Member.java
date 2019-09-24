@@ -1,16 +1,16 @@
 package hello;
 
 public class Member {
-	private String name;
 	private String id;
+	private String name;
 	private String password;
 	private int age;	
 
 	
 	public Member() {}
-	public Member(String name, String id, String password, int age) {
-		this.name=name;
+	public Member(String id, String name, String password, int age) {
 		this.id=id;
+		this.name=name;
 		this.password=password;
 		this.age=age;
 	}

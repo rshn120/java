@@ -69,10 +69,13 @@ public class AccountExample {
 	//출금.
 	public static void withdraw() {
 		System.out.println("withdraw");
+		System.out.println("계좌번호 입력: ");
+		String accntNo = sc.nextLine();
 		System.out.println("출금액 입력: ");
 		int accntBalance=sc.nextInt();
 		for(Account accnt : accountArray) {
-			if(accnt.getBalance().equals(accntNo)) {
+			if(accnt != null && accnt.getAno().equals(accntNo)) {
+				accnt.setBalance(-accntBalance);
 				
 			}
 		}

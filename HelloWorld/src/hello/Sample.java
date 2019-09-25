@@ -21,9 +21,4 @@ public class Sample {
 	num1 += 3; //num1 = num1 + 3;
 	num1 *= 3; //num1 = num1 * 3;
 			}
-			
-					
-		
-	
-
 }

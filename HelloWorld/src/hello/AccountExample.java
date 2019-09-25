@@ -60,7 +60,7 @@ public class AccountExample {
 		System.out.println("입금액: ");
 		int accntBalance = sc.nextInt();
 		for(Account accnt : accountArray) {
-			if(accnt != null && accnt.getAno().equals(accntNo)) {
+			if(accnt.getAno().equals(accntNo)) {
 				accnt.setBalance(accntBalance);
 			}
 				
@@ -71,11 +71,12 @@ public class AccountExample {
 		System.out.println("withdraw");
 		System.out.println("계좌번호 입력: ");
 		String accntNo = sc.nextLine();
-		System.out.println("출금액: ");
-		int accntBalance = sc.nextInt();
+		System.out.println("출금액 입력: ");
+		int accntBalance=sc.nextInt();
 		for(Account accnt : accountArray) {
 			if(accnt != null && accnt.getAno().equals(accntNo)) {
-				accnt.setBalance(-accntBalance);				
+				accnt.setBalance(-accntBalance);
+				
 			}
 		}
 		

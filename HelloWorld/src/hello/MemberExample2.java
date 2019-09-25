@@ -60,13 +60,13 @@ public class MemberExample2 {
 		boolean isId = false, isPw=false;
 		String name = null;
 		int age=0;
-		for(Member a : memberArray) {
-			if(a !=null&&a.getId().equals(Id)) {
-				if(a.getPassword().equals(Pswd)) {
+		for(Member m : memberArray) {
+			if(m !=null&&m.getId().equals(Id)) {
+				if(m.getPassword().equals(Pswd)) {
 					isId = true;
 					isPw = true;
-					name = a.getName();
-					age = a.getAge();
+					name = m.getName();
+					age = m.getAge();
 					break;
 				}else { //id 맞고 pw 틀리다
 					isId=true;
@@ -103,8 +103,9 @@ public class MemberExample2 {
 			System.out.println("존재하지 않는 아이디입니다.");
 			
 		}
-	}
+	}	
 	public static Member findAccount(String ano) {
 		return null;
 	}
 }
+

@@ -50,7 +50,7 @@ public class BoardProc {
 		System.out.println("조회할 번호를 입력: ");
 		int boardNo = sc.nextInt();
 		for(int i=0;i<boardAry.length;i++) {
-			if(boardAry!=null && boardAry[i].getBoardNo()==boardNo) {
+			if(boardAry[i]!=null && boardAry[i].getBoardNo()==boardNo) {
 				System.out.println(boardAry[i].getTitle()+","+boardAry[i].getContents());
 			}
 		}

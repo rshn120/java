@@ -173,7 +173,7 @@ public class TestScore {
 		for (int i = 0; i < stdAry.length; i++) { //학생 정보를 복사함
 			if (students[i] != null) {
 				System.out.println("std:" + students[i].getStudentNo());
-				stdAry[i] = new Student();
+				stdAry[i] = new Student();//객체를 만들어서 값을 넣기위해
 				stdAry[i].setStudentNo(students[i].getStudentNo());
 				stdAry[i].setName(students[i].getName());
 				stdAry[i].setKor(students[i].getEng() + students[i].getKor() + students[i].getMath());

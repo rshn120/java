@@ -36,5 +36,9 @@ public class Board {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
+	@Override
+	public String toString() { //마우스 오른쪽 소스에서 제네릭 투 스트링 클릭!
+		return "[게시번호=" + boardNo + ", 컨텐츠=" + contents + ", 제목=" + title + ", 글쓴이=" + writer + "]";
+	}
 	
 }

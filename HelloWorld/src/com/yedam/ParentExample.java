@@ -16,9 +16,9 @@ class Child extends Parent {
 public class ParentExample {
 	public static void main(String[] args) {
 		Child c1 = new Child();
-//		c1.method1();
-//		c1.method2();
-//		c1.method3();
+		c1.method1();
+		c1.method2();
+		c1.method3();
 		Parent p1 = c1;
 		if(p1 instanceof Child) {
 		p1.method1();

@@ -7,5 +7,9 @@ public class Parent {
 	void method2() {
 		System.out.println("부모클래스의 메소드2");
 	}
+	
+	
+
+	
 }
 

@@ -18,7 +18,15 @@ public class BoardProc {
 		while(true) {
 			System.out.println("메뉴선택하세요.");
 			System.out.println("1.작성 2.단건조회 3.전체조회 4.변경 5.글삭제 6.종료");
-			int menu = sc.nextInt();
+			int menu = 0;
+			try {
+				menu = sc.nextInt(); //error 발생가능한 곳.
+			}catch(Exception e) {			
+				System.out.println("정상적인 메뉴선택해주세요.");
+//				e.printStackTrace();
+				sc.nextLine();
+			}
+			
 			if(menu==1) {
 				writeBoard();
 			}else if(menu==2) {
@@ -39,7 +47,15 @@ public class BoardProc {
 	public void writeBoard() {
 		System.out.println("글작성.");
 		System.out.println("게시글 번호 입력: ");
-		int boardNo = sc.nextInt();
+		
+		try {
+			int	boardNo = sc.nextInt(); //error 발생가능한 곳.
+			System.out.println("게시글 번호는 숫자로 입력하세요.");
+			
+		}catch(Exception e) {			
+			System.out.println("게시글 번호는 숫자로 입력하세요.");
+			sc.nextLine();	
+		}
 		System.out.println("제목을 입력: ");
 		String title = sc.next();
 		System.out.println("내용을 입력: ");

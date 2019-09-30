@@ -47,14 +47,19 @@ public class BoardProc {
 	public void writeBoard() {
 		System.out.println("글작성.");
 		System.out.println("게시글 번호 입력: ");
-		
-		try {
-			int	boardNo = sc.nextInt(); //error 발생가능한 곳.
-			System.out.println("게시글 번호는 숫자로 입력하세요.");
+		int boardNo = 0;
+		boolean run = true;
+		while(run) {
+			try {
+				boardNo = sc.nextInt(); //error 발생가능한 곳.
+				sc.nextLine();
+				run = false;
+			}catch(Exception e) {
+				System.out.println("게시글 번호는 숫자로 입력하세요.");
+				System.out.println("게시글 번호 입력: ");
+				sc.nextLine();
+			}	
 			
-		}catch(Exception e) {			
-			System.out.println("게시글 번호는 숫자로 입력하세요.");
-			sc.nextLine();	
 		}
 		System.out.println("제목을 입력: ");
 		String title = sc.next();
@@ -86,7 +91,21 @@ public class BoardProc {
 	}
 	public void updateBoard() {
 		System.out.println("수정할 글 번호: ");
-		int boardNo = sc.nextInt();
+		int boardNo = 0;
+		boolean run = true;
+		while(run) {
+			try {
+				boardNo = sc.nextInt(); //error 발생가능한 곳.
+				sc.nextLine();
+				run = false;
+			}catch(Exception e) {
+				System.out.println("수정할 번호는 숫자로 입력하세요.");
+				System.out.println("수정할 번호 입력: ");
+				sc.nextLine();
+			}	
+			
+		}
+//		boardNo = sc.nextInt();
 		System.out.println("변경할 제목: ");
 		String title = sc.next();
 		System.out.println("변경할 내용: ");
@@ -101,8 +120,21 @@ public class BoardProc {
 	
 	public void getBoardDelete() {
 		System.out.println("몇번 글을 삭제 합니까?");
-		int boardNo = sc.nextInt();
+		int boardNo =0;
+		boolean run = true;
+		while(run) {
+			try {
+				boardNo = sc.nextInt();
+				sc.hasNextLine();
+				run = false;
+			}catch(Exception e) {
+				System.out.println("삭제할 번호를 숫자로 입력하세요.");
+				System.out.println("삭제할 번호 입력: ");
+				sc.nextLine();
+			}
 		service.getBoardDelete(boardNo, boardAry);
+		}
+		
 		
 		
 	}

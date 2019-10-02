@@ -23,5 +23,12 @@ public class Util {
 		double d2 = t2.doubleValue();//Number의 doubleValue() 메소드 사용
 		return Double.compare(d1, d2);
 	}
+	public static <K,V> V getValue(Pair<K,V> p, K s) {
+		if(p.getKey().equals(s)) {
+			return p.getValue();
+		}else {
+			return null;
+		}
+	}
 	
 }

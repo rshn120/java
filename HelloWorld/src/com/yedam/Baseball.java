@@ -6,7 +6,6 @@ public class Baseball {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-
 		int[] in = new int[3];
 		
 		boolean run = true;

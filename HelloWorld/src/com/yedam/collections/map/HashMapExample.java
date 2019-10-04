@@ -23,6 +23,17 @@ public class HashMapExample {
 			String key = iter.next();
 			System.out.println("key: "+key+", value: "+map.get(key));
 		}
+		System.out.println("--------------------------------------");
+		Set<Map.Entry<String, Integer>> entrySet = map.entrySet();//중복값을 허용하지 않는 Set
+		Iterator<Map.Entry<String, Integer>> mapIter = entrySet.iterator();
+		while(mapIter.hasNext()) {
+			Map.Entry<String, Integer> ent = mapIter.next();
+			System.out.println("key: "+ent.getKey()+", value: "+ent.getValue());
+			
+		}
+		for(Map.Entry<String, Integer> mapEnt : entrySet) {
+			System.out.println(mapEnt.getKey()+", " + mapEnt.getValue());
+		}
 		
 	}
 }

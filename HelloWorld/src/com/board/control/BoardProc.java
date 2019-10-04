@@ -1,18 +1,23 @@
 package com.board.control;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Scanner;
 
-import com.board.impl.BoardServiceImpl;
+import com.board.impl.BoardCollectionImpl;
 import com.board.model.Board;
-import com.board.model.BoardService;
+import com.board.model.BoardCollection;
 
 public class BoardProc {
 	
 	//필드선언
 	Scanner sc = new Scanner(System.in);
 	//배열 선언 공통으로 쓰기위해 필드로 선언
-	Board[] boardAry = new Board[10];
-	BoardService service = new BoardServiceImpl();
+//	Board[] boardAry = new Board[10];
+	List<Board> boardAry = new ArrayList<>();
+	BoardCollection service = (BoardCollection) new BoardCollectionImpl();
+//	BoardService service = new BoardServiceImpl();
 
 	public void execute() {
 		while(true) {
@@ -67,9 +72,12 @@ public class BoardProc {
 		String contents = sc.next();
 		System.out.println("작성자 입력: ");
 		String writer = sc.next();
+
 		
 		Board board = new Board(boardNo, title, contents, writer);
-		service.writeBoard(board, boardAry);
+
+		System.out.println("--------------------------------------");
+//		service.writeBoard(board, boardAry);
 
 	}
 	public void getBoard() {
@@ -82,7 +90,7 @@ public class BoardProc {
 	}
 	public void getBoardList() {
 		System.out.println("전체글조회.");
-		Board[] resultAry = service.getBoardList(boardAry);
+		Collection<Board> resultAry = service.getBoardList(boardAry);
 		for(Board brd : resultAry) {
 			if(brd!=null)
 			System.out.println(brd);

@@ -3,9 +3,9 @@ package suna;
 public class Member {
    String id;
    String name;
-   String reg;
+   int reg;
    
-   public Member (String id, String name, String reg) {
+   public Member (String id, String name, int reg) {
       this.id = id;
       this.name = name;
       this.reg = reg;
@@ -23,10 +23,10 @@ public class Member {
    public void setName(String name) {
       this.name = name;
    }
-   public String getReg() {
+   public int getReg() {
       return reg;
    }
-   public void setReg(String reg) {
+   public void setReg(int reg) {
       this.reg = reg;
    }
    

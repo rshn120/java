@@ -2,6 +2,8 @@ package suna;
 
 import java.util.Scanner;
 
+import hello.Member;
+
 public class MemberExample {
 	private static Member[] memberArray = new Member[50];
 	private static Scanner sc = new Scanner(System.in);
@@ -51,26 +53,43 @@ public class MemberExample {
 	}
 	//멤버 id 조회
 	public static void getMem() {
-		System.out.println("조회할 회원 입력: ");
+		System.out.println("조회할 ID를 입력: ");
 		String Id = sc.nextLine();
-		boolean isId = false;
+		System.out.println("조회할 pw를 입력: ");
+		String Pswd = sc.nextLine();
+		boolean isId = false, isPw=false;
 		String name = null;
-		String reg = null;
+		int age=0;
 		for(Member m : memberArray) {
 			if(m !=null&&m.getId().equals(Id)) {
+				if(m.getPassword().equals(Pswd)) {
+					isId = true;
+					isPw = true;
 					name = m.getName();
-					reg = m.getReg();
+					age = m.getAge();
 					break;
+				}else { //id 맞고 pw 틀리다
+					isId=true;
+					isPw=false;
+					break;
+				}
+			}else { // id, pw 다 틀리다
+				isId = false;
+				isPw = false;
+			}
+			
 		}
-		if(isId==true && reg==m.getReg()) {
-			System.out.println("이름은 : "+name+", 과정 : "+reg); 
+		if(isId==true && isPw == true) {
+			System.out.println("이름은 : "+name+", 나이 : "+age); 
 						
-		}else if(isId==false && reg==m.getReg()) {
-			System.out.println("존재하지 않는 회원입니다.");
+		}else if(isId==true && isPw==false) {
+			System.out.println("패스워드가 틀립니다.");
+			
+		}else if(isId==false && isPw==false) {
+			System.out.println("존재하지 않는 아이디입니다.");
 			
 		}
 	}	
-	}
 
 
 	public static Member findAccount(String ano) {

@@ -5,7 +5,7 @@ import java.util.Scanner;
 import hello.Member;
 
 public class MemberExample {
-	private static Member[] memberArray = new Member[50];
+	private static Member[] mem = new Member[50];
 	private static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -33,12 +33,12 @@ public class MemberExample {
 		System.out.println("사용자명 입력: ");
 		String Name = sc.nextLine();
 		System.out.println("등록과정: ");
-		String reg = sc.nextLine();
+		int Reg = sc.nextInt();
 		
-		Member accnt = new Member(Id, Name, reg);
-		for(int i=0;i<memberArray.length;i++) {
-			if(memberArray[i]==null) {
-				memberArray[i] = accnt;
+		Member accnt = new Member(Id, Name, Name, Reg);
+		for(int i=0;i<mem.length;i++) {
+			if(mem[i]==null) {
+				mem[i] = accnt;
 				break;
 			}
 		}		
@@ -46,9 +46,9 @@ public class MemberExample {
 	//멤버리스트 조회하는 메소드.
 	public static void getMember() {
 		System.out.println("getAccount");
-		for(Member a : memberArray) {
+		for(Member a : mem) {
 			if(a != null)//null 값이 없을 경우에 실행하라
-			System.out.println("아이디 : "+a.getId()+", 사용자: "+a.getName()+", 과정: "+a.getReg());
+			System.out.println("아이디 : "+a.getId()+", 사용자: "+a.getName()+", 과정: "+a.getId());
 		}
 	}
 	//멤버 id 조회
@@ -60,7 +60,7 @@ public class MemberExample {
 		boolean isId = false, isPw=false;
 		String name = null;
 		int age=0;
-		for(Member m : memberArray) {
+		for(Member m : mem) {
 			if(m !=null&&m.getId().equals(Id)) {
 				if(m.getPassword().equals(Pswd)) {
 					isId = true;

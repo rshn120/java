@@ -1,4 +1,4 @@
-package suna;
+package sun;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package suna;
+package sun;
 //main () 메소드 매개 변수
 public class Example5_7 {
 	public static void main(String[] args) {

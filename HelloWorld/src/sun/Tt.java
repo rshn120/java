@@ -1,4 +1,4 @@
-package suna;
+package sun;
 
 public class Tt {
 	public static void main(String[] args) {

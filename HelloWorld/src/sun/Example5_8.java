@@ -1,4 +1,4 @@
-package suna;
+package sun;
 
 public class Example5_8 {
 	public static void main(String[] args) {

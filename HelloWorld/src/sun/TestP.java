@@ -1,4 +1,4 @@
-package suna;
+package sun;
 
 public class TestP {
 	public void TestPt() {

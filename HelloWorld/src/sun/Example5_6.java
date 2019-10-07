@@ -1,4 +1,4 @@
-package suna;
+package sun;
 //배열의 length 필드
 public class Example5_6 {
 	public static void main(String[] args) {

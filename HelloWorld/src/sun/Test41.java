@@ -1,4 +1,4 @@
-package suna;
+package sun;
 
 public class Test41  extends Test4{
 	// Employee 상속

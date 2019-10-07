@@ -1,4 +1,4 @@
-package suna;
+package sun;
 
 public class TestC extends TestP {
 	public void TestCd() {

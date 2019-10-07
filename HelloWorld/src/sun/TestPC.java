@@ -1,4 +1,4 @@
-package suna;
+package sun;
 
 public class TestPC extends TestC{
 	public static void main(String[] args) {

@@ -13,6 +13,7 @@ public interface EmployeeService {
 	//셀러리 필드 수정/변경처리
 	public void updateEmployee(Employee emp);
 	//삭제
-	public void deleteEmployee(int empNo);
+	public void deleteEmployee(Employee emp);
+	void deleteEmployee(int empNo);
 	
 }

@@ -44,12 +44,9 @@ public class EmpProc {
 	}
 
 	public void deleteBoard() {
-		System.out.println("삭제할 직원 번호.");
-		int empId = sc.nextInt();
-		// 입력받은 값을 emp 인스턴스에 담는다.
-		Employee emp = new Employee();
-		emp.setEmployeeId(empId);
-		service.deleteEmployee(emp);
+		System.out.println("삭제할 글번호:");
+		int empNo = sc.nextInt();
+		service.deleteEmployee(empNo);
 	}
 
 	public void updateBoard() {

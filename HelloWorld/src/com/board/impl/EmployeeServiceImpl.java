@@ -20,6 +20,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public void insertEmployee(Employee emp) {
 		dao.insertEmpProc(emp);
+//		dao.insertEmp(emp);
 	}
 	@Override
 	public void updateEmployee(Employee emp) {
@@ -28,12 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void deleteEmployee(int empNo) {
-		
-	}
-	@Override
-	public void deleteEmployee(Employee emp) {
-		// TODO Auto-generated method stub
-		
+	   dao.deleteEmployee(empNo);
 	}
 
 }

@@ -36,15 +36,15 @@ public class EmpProc {
 			} else if (menu == 5) {
 				deleteBoard();
 			} else if (menu == 9) {
-				System.out.println("프로그램을 종료합니다.");
+				System.out.println("프로그램을 종료합니다. ");
 				break;
 			}
 		}
-		System.out.println("프로그램 종료.");
+		System.out.println("프로그램 종료. ");
 	}
 
 	public void deleteBoard() {
-		System.out.println("삭제할 글번호:");
+		System.out.println("삭제할 글번호: ");
 		int empNo = sc.nextInt();
 		service.deleteEmployee(empNo);
 	}

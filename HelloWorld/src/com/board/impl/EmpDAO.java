@@ -19,7 +19,7 @@ public class EmpDAO {
    
    public Employee getEmployee(int empId) {
       conn = DAO.getConnect();
-      String sql = "select * from emp_temp2 where employee_id = ?";
+      String sql = "select * from employees where employee_id = ?";
       String sql1="{? = call get_dept_name(?)}";
       Employee emp = null;
       try {
@@ -83,7 +83,7 @@ public class EmpDAO {
 // 삭제 메소드
  public void deleteEmployee(int empNo) {
     conn = DAO.getConnect();
-    String sql = "delete from emp_temp2 where employee_id = ?";
+    String sql = "delete from employees where employee_id = ?";
     try {
        pstmt = conn.prepareStatement(sql);
        pstmt.setInt(1, empNo);
@@ -130,7 +130,7 @@ public class EmpDAO {
    public List<Employee> getEmpList() {
       List<Employee> list = new ArrayList<>();
       conn = DAO.getConnect();
-      String sql = "select * from emp_temp2 order by 1 desc";
+      String sql = "select * from employees order by 1 desc";
       Employee emp = null;
       try {
          pstmt = conn.prepareStatement(sql);

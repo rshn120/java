@@ -18,7 +18,8 @@ public class BoardDBProc {
 		while(true) {
 			int menu=0;
 			System.out.println("1.게시글 작성 2.게시글리스트 9.종료");
-			menu = sc.nextInt();
+			menu = sc.nextInt(); 
+			sc.nextLine();
 			if(menu==1) {
 				System.out.println("1번을 선택했습니다.");
 				writeBoard();
@@ -40,6 +41,7 @@ public class BoardDBProc {
 	//로그인 체크
 	public void loginCheck() {
 		while(true) {
+			sc.nextLine();
 			System.out.println("id를 입력");
 			String id = sc.nextLine();
 			System.out.println("pass를 입력");

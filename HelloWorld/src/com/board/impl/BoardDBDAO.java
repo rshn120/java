@@ -13,38 +13,39 @@ public class BoardDBDAO {
 	ResultSet rs = null;
 	PreparedStatement pstmt = null;
 	String name = null;
-	
+
 	public void insertBoard(BoardDB board) {
 		conn = DAO.getConnect();
-		String sql="insert into boards values(board_seq.nextval,?,?,?,sysdate,null)";
+		String sql = "insert into boards values((select max(board_no)+1 from boards) ,?,?,?,sysdate,null)";  //board_seq.nextval
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, board.getTitle());
 			pstmt.setString(2, board.getContent());
 			pstmt.setString(3, board.getWriter());
 			int r = pstmt.executeUpdate();
-			System.out.println(r+"건이 입력되었습니다.");
+			System.out.println(r + "건이 입력되었습니다.");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-		}finally {
+
+		} finally {
 			try {
 				conn.close();
-		}catch(SQLException e) {
-            e.printStackTrace();
-					}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
+	}
+
 	public String getUserName(String id, String pass) {
 		conn = DAO.getConnect();
 		String sql = "select * from user_login where id=? and passwd=?";
 		try {
-			pstmt=conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, pass);
-			
+
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				name = rs.getString("name");
 			}
 		} catch (SQLException e) {

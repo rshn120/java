@@ -22,7 +22,8 @@ public class BoardDBServiceImpl implements BoardDBService {
 
 	@Override
 	public List<BoardDB> getBoardList() {
-		return null;
+		List<BoardDB> list = dao.getBoardList();
+		return list;
 	}
 
 	@Override
@@ -49,5 +50,6 @@ public class BoardDBServiceImpl implements BoardDBService {
 	public void deleteBoard(int boardNo) {
 		
 	}
+
 
 }

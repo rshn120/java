@@ -1,5 +1,6 @@
 package com.board.control;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.board.impl.BoardDBServiceImpl;
@@ -15,16 +16,18 @@ public class BoardDBProc {
 	
 	public void execute() {
 		loginCheck();
+		
 		while(true) {
 			int menu=0;
 			System.out.println("1.게시글 작성 2.게시글리스트 9.종료");
 			menu = sc.nextInt(); 
-			sc.nextLine();
+//			sc.nextLine();
 			if(menu==1) {
 				System.out.println("1번을 선택했습니다.");
 				writeBoard();
 			}else if(menu==2) {
 				System.out.println("2번을 선택했습니다.");
+				getBoardList();
 			}else if(menu==3) {
 				System.out.println("3번을 선택했습니다.");
 			}else if(menu==4) {
@@ -41,12 +44,11 @@ public class BoardDBProc {
 	//로그인 체크
 	public void loginCheck() {
 		while(true) {
-			sc.nextLine();
 			System.out.println("id를 입력");
 			String id = sc.nextLine();
 			System.out.println("pass를 입력");
-			String pass=sc.nextLine();
-			String name = service.loginCheck(id, pass);
+			String passwd = sc.nextLine();
+			String name = service.loginCheck(id, passwd);
 			
 			if(name!=null) {
 				System.out.println(name + "님 환영합니다.");
@@ -70,6 +72,13 @@ public class BoardDBProc {
 		board.setContent(content);
 		board.setWriter(loginId);
 		service.insertBoard(board);
-		
+	}
+	
+	public void getBoardList() {
+		System.out.println("전체글 조회");
+		List<BoardDB> boards = service.getBoardList();
+		for(BoardDB board : boards) {
+			System.out.println(board);
+		}
 	}
 }

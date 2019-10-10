@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.board.common.DAO;
 import com.board.model.BoardDB;
@@ -36,15 +38,17 @@ public class BoardDBDAO {
 		}
 	}
 
-	public String getUserName(String id, String pass) {
+	public String getUserName(String id, String passwd) {
 		conn = DAO.getConnect();
 		String sql = "select * from user_login where id=? and passwd=?";
+		String name = null;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
-			pstmt.setString(2, pass);
+			pstmt.setString(2, passwd);
 
 			rs = pstmt.executeQuery();
+			
 			if (rs.next()) {
 				name = rs.getString("name");
 			}
@@ -52,5 +56,37 @@ public class BoardDBDAO {
 			e.printStackTrace();
 		}
 		return name;
+	}
+	
+	public List<BoardDB> getBoardList(){
+		List<BoardDB> list = new ArrayList<>();
+		conn = DAO.getConnect();
+		String sql="select * from boards order by 1 desc";
+		BoardDB bd = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				bd = new BoardDB();
+				bd.setBoardNo(rs.getInt("board_no"));
+				bd.setTitle(rs.getString("title"));
+				bd.setContent(rs.getString("content"));
+				bd.setWriter(rs.getString("writer"));
+				bd.setCreationDate(rs.getString("creation_date"));
+				bd.setOrigNo(rs.getString("orig_no"));
+				list.add(bd);
+								
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		}
+		return list;
+		
 	}
 }

@@ -45,4 +45,9 @@ public class BoardDB {
 	public void setOrigNo(String origNo) {
 		this.origNo = origNo;
 	}
+	@Override
+	public String toString() {
+		return "BoardDB [boardNo=" + boardNo + ", title=" + title + ", content=" + content + ", writer=" + writer
+				+ ", creationDate=" + creationDate + ", origNo=" + origNo + "]";
+	}
 }

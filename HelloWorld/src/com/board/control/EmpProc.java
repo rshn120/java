@@ -14,6 +14,9 @@ public class EmpProc {
 
 	public void execute() {
 		while (true) {
+			
+	//		login_check();
+			
 			System.out.println("메뉴선택하세요.");
 			System.out.println("1.작성 2.단건조회 3.전체조회 4.변경 5.삭제 9.종료 ");
 			int menu = 0;
@@ -41,6 +44,23 @@ public class EmpProc {
 			}
 		}
 		System.out.println("프로그램 종료. ");
+	}
+
+	private void login_check() {
+		while(true) {
+			System.out.println("ID 입력: ");
+			String id = sc.nextLine();
+			System.out.println("passwd를 입력: ");
+			String passwd = sc.nextLine();
+			
+			if(id.equals("user1") && passwd.equals("1234")) {
+				break;
+			}else {
+				System.out.println("id, passwd 입력");
+			}
+		}
+		
+		
 	}
 
 	public void deleteBoard() {

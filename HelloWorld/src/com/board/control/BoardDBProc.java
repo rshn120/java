@@ -19,27 +19,43 @@ public class BoardDBProc {
 		
 		while(true) {
 			int menu=0;
-			System.out.println("1.게시글 작성 2.게시글리스트 9.종료");
+			System.out.println("1.게시글 작성 2.리스트 3.글조회 4.글 내용수정  9.종료");
 			menu = sc.nextInt(); 
-//			sc.nextLine();
 			if(menu==1) {
-				System.out.println("1번을 선택했습니다.");
+				System.out.println("게시글 작성");//등록
 				writeBoard();
 			}else if(menu==2) {
-				System.out.println("2번을 선택했습니다.");
+				System.out.println("전체조회");//조회
 				getBoardList();
 			}else if(menu==3) {
-				System.out.println("3번을 선택했습니다.");
+				System.out.println("원본글 조회");//원본글 조회
+				getBoard();
 			}else if(menu==4) {
-				System.out.println("4번을 선택했습니다.");
+				System.out.println("글내용 수정.");//수정
+				updateBoard();
 			}else if(menu==5) {
-				System.out.println("5번을 선택했습니다.");
+				System.out.println("5번을 선택했습니다.");//삭제
+				deleteBoard();
 			}else if(menu==9) {
 				System.out.println("프로그램을 종료합니다.");
 			break;	
 			}
 			
 		}
+	}
+	public void updateBoard() {
+		System.out.println("변경할 글 번호 : ");
+		int boardNo = sc.nextInt();sc.nextLine();
+		System.out.println("제목변경");
+		String title = sc.nextLine();
+		System.out.println("내용변경");
+		String content = sc.nextLine();
+		BoardDB board = new BoardDB();
+		board.setBoardNo(boardNo);
+		board.setTitle(title);
+		board.setContent(content);
+
+		service.updateBoard(board);
 	}
 	//로그인 체크
 	public void loginCheck() {
@@ -59,7 +75,49 @@ public class BoardDBProc {
 			}
 		}
 	}
-	public void writeBoard() {
+	public void  getBoard()	{
+		System.out.println("조회할 글번호:");
+		int boardNo = sc.nextInt();
+		sc.nextLine();
+		//원본글
+		BoardDB board = service.getBoard(boardNo);
+		if(board != null) {
+		System.out.println("---------[원본글]------------");
+		System.out.println("제목 : "+board.getTitle());
+		System.out.println("내용 : "+board.getContent());
+		System.out.println("작성자: "+board.getWriter());
+		System.out.println("작성일자: "+board.getCreationDate());
+		//댓글
+		List<BoardDB> list = service.getReply(boardNo);
+		System.out.println("---------[댓글]--------------");
+		
+		for(BoardDB brd : list) {
+			System.out.println("-> "+brd.getBoardNo()+" | "+brd.getContent()+" | "+brd.getCreationDate());
+		}System.out.println("-----------------------------------");
+		System.out.println("1.댓글작성 2.이전메뉴");
+		
+		int subMenu = 0;
+		if(subMenu==1) {
+			System.out.println("댓글 입력: ");
+			String reply = sc.nextLine();
+			BoardDB board1 = new BoardDB();
+			board1.setContent(reply);
+			board1.setOrigNo(board.getBoardNo());
+			board1.setWriter(loginId);
+			service.insertReply(board1);
+		}else {
+	
+			return;
+		} 
+	}else {
+		System.out.println("없는 글 번호입니다.");
+		return;
+		}
+	}
+	public void replyBoard() {//댓글
+		
+	}
+	public void writeBoard() {//글 작성
 		
 		System.out.println("재목을 입력하세요.");
 		String title = sc.nextLine();
@@ -74,11 +132,17 @@ public class BoardDBProc {
 		service.insertBoard(board);
 	}
 	
-	public void getBoardList() {
+	public void getBoardList() {//전체 조회
 		System.out.println("전체글 조회");
 		List<BoardDB> boards = service.getBoardList();
 		for(BoardDB board : boards) {
 			System.out.println(board);
 		}
+	}
+	public void deleteBoard() {//삭제
+		System.out.println("삭제할 글번호: ");
+		int dbNo = sc.nextInt();
+//		if(loginId==)
+		service.deleteBoard(dbNo);
 	}
 }

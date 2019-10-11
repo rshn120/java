@@ -7,7 +7,7 @@ public class BoardDB {
 	private String content;
 	private String writer;
 	private String creationDate;
-	private String origNo;
+	private int origNo;
 	
 	public int getBoardNo() {
 		return boardNo;
@@ -39,11 +39,11 @@ public class BoardDB {
 	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
-	public String getOrigNo() {
+	public int getOrigNo() {
 		return origNo;
 	}
-	public void setOrigNo(String origNo) {
-		this.origNo = origNo;
+	public void setOrigNo(int i) {
+		this.origNo = i;
 	}
 	@Override
 	public String toString() {

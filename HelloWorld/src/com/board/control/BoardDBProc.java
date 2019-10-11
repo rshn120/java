@@ -149,9 +149,10 @@ public class BoardDBProc {
 		//System.out.println(board.getWriter());
 		if(board == null) {
 			System.out.println("없는 게시판");
-		}else if(loginId.equals(board.getWriter()))
-			{service.deleteBoard(dbNo);
-			System.out.println(dbNo+"삭제되었습니다.");}
+		}else if(loginId.equals(board.getWriter())) {
+			service.deleteBoard(dbNo);
+			System.out.println(dbNo+"삭제되었습니다.");
+			}
 		else {
 			System.out.println("권한이 없습니다.");
 		}

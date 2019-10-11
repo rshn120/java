@@ -19,7 +19,7 @@ public class BoardDBProc {
 		
 		while(true) {
 			int menu=0;
-			System.out.println("1.게시글 작성 2.리스트 3.글조회 4.글 내용수정  9.종료");
+			System.out.println("1.게시글 작성 2.리스트 3.글조회 4.글 내용수정  5.글 삭제9.종료");
 			menu = sc.nextInt(); 
 			if(menu==1) {
 				System.out.println("게시글 작성");//등록
@@ -142,7 +142,19 @@ public class BoardDBProc {
 	public void deleteBoard() {//삭제
 		System.out.println("삭제할 글번호: ");
 		int dbNo = sc.nextInt();
-//		if(loginId==)
-		service.deleteBoard(dbNo);
+		sc.nextLine();
+		
+		BoardDB board = service.getBoard(dbNo);		
+	
+		//System.out.println(board.getWriter());
+		if(board == null) {
+			System.out.println("없는 게시판");
+		}else if(loginId.equals(board.getWriter()))
+			{service.deleteBoard(dbNo);
+			System.out.println(dbNo+"삭제되었습니다.");}
+		else {
+			System.out.println("권한이 없습니다.");
+		}
+		
 	}
 }

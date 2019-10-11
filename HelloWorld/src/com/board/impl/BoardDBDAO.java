@@ -17,6 +17,7 @@ public class BoardDBDAO {
 	String name = null;
 	
 	public void updateBoard(BoardDB board) {
+		
 		conn = DAO.getConnect();
 		System.out.println("content : "+ board.getContent());
 		String sql = "update boards set orig_no = orig_no";  
@@ -37,7 +38,7 @@ public class BoardDBDAO {
 			pstmt.setString(++n, board.getContent());
 			}
 			pstmt.setInt(++n, board.getBoardNo());
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -218,7 +219,7 @@ public class BoardDBDAO {
 	    try {
 	       pstmt = conn.prepareStatement(sql);
 	       pstmt.setInt(1, empNo);
-	       rs = pstmt.executeQuery();
+	       pstmt.executeUpdate();
 	    } catch (SQLException e) {
 	       e.printStackTrace();
 	    } finally {

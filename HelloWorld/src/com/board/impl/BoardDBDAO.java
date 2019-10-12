@@ -53,7 +53,8 @@ public class BoardDBDAO {
 	}
 	public void replyBoard(BoardDB board) {
 		conn = DAO.getConnect();
-		String sql = "insert into boards values((select max(board_no)+1 from boards) ,?,?,?,sysdate,?)";  //board_seq.nextval
+		String sql = "insert into boards values((select max(board_no)+1 from boards) ,?,?,?,sysdate,?)";  
+		//board_seq.nextval
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, board.getTitle());

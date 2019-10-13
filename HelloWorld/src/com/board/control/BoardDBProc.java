@@ -19,7 +19,7 @@ public class BoardDBProc {
 
 		while (true) {
 			int menu = 0;
-			System.out.println("1.게시글 작성 | 2.리스트 | 3.글조회  | 4.글 내용수정 | 5.글 삭제 | 6.원본글&댓글 삭제| 9.종료");
+			System.out.println("1.게시글 작성 | 2.리스트 | 3.글조회  | 4.글 내용수정 | 5.글 삭제 | 6.원본글 & 댓글 삭제| 9.종료");
 			menu = sc.nextInt();
 			if (menu == 1) {
 				// 등록
@@ -35,7 +35,7 @@ public class BoardDBProc {
 				updateBoard();
 			} else if (menu == 5) {
 				// 삭제 - 본인 글이 아니면 삭제 못함
-				deleteBoard();    					
+				deleteBoard();
 			} else if (menu == 6) {
 				//삭제 - 원본글과 댓글까지 삭제
 				delBoard();

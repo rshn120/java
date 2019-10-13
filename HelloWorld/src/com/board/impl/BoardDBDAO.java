@@ -231,4 +231,26 @@ public class BoardDBDAO {
 	       }
 	    }
 	}
+	
+	public void delBoard(BoardDB board) {//게시글 원본이랑 댓글이 있을 경우 댓글까지 삭제
+		conn = DAO.getConnect();
+		String sql = "delete from boards where board_no = ? or orig_no = ?";
+		try {
+			conn.prepareStatement(sql);
+			pstmt.setInt(1, board.getBoardNo());
+			pstmt.setInt(2, board.getOrigNo());
+			int rs = pstmt.executeUpdate();
+			System.out.println(rs + " 건이 삭제되었습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();		
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 }

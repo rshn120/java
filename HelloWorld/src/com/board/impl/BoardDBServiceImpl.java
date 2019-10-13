@@ -51,5 +51,10 @@ public class BoardDBServiceImpl implements BoardDBService {
 		dao.deleteBoard(boardNo);
 	}
 
+	@Override
+	public void delBoard(BoardDB board) {
+		dao.delBoard(board);
+	}
+
 
 }

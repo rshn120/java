@@ -8,6 +8,8 @@ import com.board.model.BoardDB;
 import com.board.model.BoardDBService;
 
 public class BoardDBProc {
+	private static final int boardNo = 0;
+	private static final int orgNo = 0;
 	Scanner sc = new Scanner(System.in);
 	BoardDBService service = new BoardDBServiceImpl();
 	String loginId = null;
@@ -17,7 +19,7 @@ public class BoardDBProc {
 
 		while (true) {
 			int menu = 0;
-			System.out.println("1.게시글 작성 | 2.리스트 | 3.글조회  | 4.글 내용수정 | 5.글 삭제 | 9.종료");
+			System.out.println("1.게시글 작성 | 2.리스트 | 3.글조회  | 4.글 내용수정 | 5.글 삭제 | 6.원본글&댓글 삭제| 9.종료");
 			menu = sc.nextInt();
 			if (menu == 1) {
 				// 등록
@@ -33,7 +35,10 @@ public class BoardDBProc {
 				updateBoard();
 			} else if (menu == 5) {
 				// 삭제 - 본인 글이 아니면 삭제 못함
-				deleteBoard();
+				deleteBoard();    					
+			} else if (menu == 6) {
+				//삭제 - 원본글과 댓글까지 삭제
+				delBoard();
 			} else if (menu == 9) {
 				System.out.println("프로그램을 종료합니다.");
 				break;
@@ -118,9 +123,12 @@ public class BoardDBProc {
 			subMenu = sc.nextInt();
 			sc.nextLine();
 			if (subMenu == 1) {
+				System.out.println("댓글제목입력 :");
+				String replytitle = sc.nextLine();
 				System.out.println("댓글 입력: ");
 				String reply = sc.nextLine();
 				BoardDB board1 = new BoardDB();
+				board1.setTitle(replytitle);
 				board1.setContent(reply);
 				board1.setOrigNo(board.getBoardNo());
 				board1.setWriter(loginId);
@@ -158,7 +166,7 @@ public class BoardDBProc {
 		}
 	}
 
-	public void deleteBoard() {// 삭제
+	public void deleteBoard() {// 1건씩 삭제
 		System.out.println("삭제할 글번호: ");
 		int dbNo = sc.nextInt();
 		sc.nextLine();
@@ -174,5 +182,26 @@ public class BoardDBProc {
 			System.out.println("권한이 없습니다.");
 		}
 
+	}
+	public void delBoard() {// 원본글이나 댓글까지 일괄 삭제 ex) 원본글에 댓글이 있을 경우 댓글까지 삭제
+		BoardDB board = new BoardDB();
+		System.out.println("삭제할 글번호: ");
+		int dbNo = sc.nextInt();sc.nextLine();
+		board.setBoardNo(dbNo);
+		board.setOrigNo(board.getBoardNo());
+		BoardDB bd = service.getBoard(dbNo);
+		
+		if (bd == null) {
+			System.out.println("없는 게시글입니다.");
+		} else if (loginId.equals(bd.getWriter())) {
+			service.delBoard(board);
+			System.out.println("게시글이 삭제되었습니다.");
+		} else {
+			System.out.println("권한이 없습니다.");
+		}
+		
+		
+		
+		
 	}
 }

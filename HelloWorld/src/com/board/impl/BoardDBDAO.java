@@ -244,6 +244,60 @@ public class BoardDBDAO {
 		return list;		
 	}
 	
+	public boolean checkForReply(int boardNo) {
+		conn = DAO.getConnect();
+		String sql = "select count(*) as cnt from boards where orig_no = ?";
+		int cnt = 0;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public void deleteBoard2(BoardDB board) {
+		conn = DAO.getConnect();
+		String sql = "delete from boards where board_no=? ";
+		int rCnt = 0; // 타이틀 코텐츠 작성자(id)
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(++rCnt, board.getBoardNo());
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+	public void deleteBoard1(BoardDB board) {
+		conn = DAO.getConnect();
+		List<BoardDB> list = getReplyList(board.getBoardNo());
+		if(list.size() > 0) {
+			System.out.println("권한없음");
+		}else {
+			String sql = "delete from boards where board_no = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board.getBoardNo());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}}
+	}
+	
 	public void deleteBoard(BoardDB board) {//글 삭제
 	    conn = DAO.getConnect();
 	    String sql = "delete from boards where board_no = ?";

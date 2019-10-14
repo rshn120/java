@@ -21,6 +21,9 @@ public interface BoardDBService {
 	public void deleteBoard(BoardDB board);
 	//삭제 글 원본 이랑 댓글도 같이 삭제
 	public void delBoard(BoardDB board);
+	public void delBoard1(BoardDB board);
+	//댓글이 있을 경우 삭제 안됨
+	public void deleteBoard2(BoardDB board);
 	
 	
 }

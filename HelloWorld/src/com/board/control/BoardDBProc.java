@@ -37,8 +37,8 @@ public class BoardDBProc {
 				// 삭제 - 본인 글이 아니면 삭제 못함
 				deleteBoard();
 			} else if (menu == 6) {
-				//삭제 - 원본글과 댓글까지 삭제
-			
+				// 삭제 - 원본글과 댓글까지 삭제
+
 				delBoard();
 			} else if (menu == 9) {
 				System.out.println("프로그램을 종료합니다.");
@@ -177,21 +177,25 @@ public class BoardDBProc {
 		if (board == null) {
 			System.out.println("없는 게시판");
 		} else if (loginId.equals(board.getWriter())) {
-			service.deleteBoard(dbNo);
+			service.deleteBoard(board);
 			System.out.println("게시글이 삭제되었습니다.");
 		} else {
 			System.out.println("권한이 없습니다.");
 		}
 
 	}
+
 	public void delBoard() {// 원본글이나 댓글까지 일괄 삭제 ex) 원본글에 댓글이 있을 경우 댓글까지 삭제
 		BoardDB board = new BoardDB();
 		System.out.println("삭제할 글번호: ");
-		int dbNo = sc.nextInt();sc.nextLine();
+		int dbNo = sc.nextInt();
+		sc.nextLine();
 		board.setBoardNo(dbNo);
-		board.setOrigNo(board.getBoardNo());
+//		board.setOrigNo(board.getBoardNo());
+		board.setOrigNo(dbNo);
+
 		BoardDB bd = service.getBoard(dbNo);
-		
+
 		if (bd == null) {
 			System.out.println("없는 게시글입니다.");
 		} else if (loginId.equals(bd.getWriter())) {

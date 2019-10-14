@@ -43,12 +43,15 @@ public class BoardDBServiceImpl implements BoardDBService {
 
 	@Override
 	public void updateBoard(BoardDB board) {
+		//해당글에 대한 권한 확인.
 		dao.updateBoard(board);
+		
+		
 	}
 
 	@Override
-	public void deleteBoard(int boardNo) {
-		dao.deleteBoard(boardNo);
+	public void deleteBoard(BoardDB board) {
+		dao.deleteBoard(board);
 	}
 
 	@Override

@@ -38,6 +38,7 @@ public class BoardDBProc {
 				deleteBoard();
 			} else if (menu == 6) {
 				//삭제 - 원본글과 댓글까지 삭제
+			
 				delBoard();
 			} else if (menu == 9) {
 				System.out.println("프로그램을 종료합니다.");
@@ -199,9 +200,5 @@ public class BoardDBProc {
 		} else {
 			System.out.println("권한이 없습니다.");
 		}
-		
-		
-		
-		
 	}
 }

@@ -16,6 +16,36 @@ public class BoardDBDAO {
 	PreparedStatement pstmt = null;
 	String name = null;
 	
+	//업데이트 보드 권한 확인부분 = 샘꺼
+	   public boolean checkResponsibility(BoardDB board) {
+		      // 해당글과 작성자의 일치여부 확인
+		      conn = DAO.getConnect();
+		      String sql = "select count(*) as cnt from boards" + " where orig_no is null" + " and board_no = ?"
+		            + " and writer = ? ";
+		      int result = 0;
+		      try {
+		         pstmt = conn.prepareStatement(sql);
+		         pstmt.setInt(1, board.getBoardNo());
+		         pstmt.setString(2, board.getWriter());
+		         rs = pstmt.executeQuery();
+		         if (rs.next()) {
+		            result = rs.getInt("cnt");
+		         }
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         try {
+		            conn.close();
+		         } catch (SQLException e) {
+		            e.printStackTrace();
+		         }
+		      }
+		      if (result > 0)//권한자
+		         return true;
+		      else
+		         return false;
+		   }
+	
 	public void updateBoard(BoardDB board) {
 		
 		conn = DAO.getConnect();
@@ -214,12 +244,12 @@ public class BoardDBDAO {
 		return list;		
 	}
 	
-	public void deleteBoard(int empNo) {//글 삭제
+	public void deleteBoard(BoardDB board) {//글 삭제
 	    conn = DAO.getConnect();
 	    String sql = "delete from boards where board_no = ?";
 	    try {
 	       pstmt = conn.prepareStatement(sql);
-	       pstmt.setInt(1, empNo);
+	       pstmt.setInt(1, board.getBoardNo());
 	       pstmt.executeUpdate();
 	    } catch (SQLException e) {
 	       e.printStackTrace();
@@ -238,9 +268,9 @@ public class BoardDBDAO {
 		try {
 			conn.prepareStatement(sql);
 			pstmt.setInt(1, board.getBoardNo());
-			pstmt.setInt(2, board.getOrigNo());
-			int rs = pstmt.executeUpdate();
-			System.out.println(rs + " 건이 삭제되었습니다.");
+			pstmt.setInt(2, board.getBoardNo());
+			pstmt.executeUpdate();
+			System.out.println("삭제되었습니다.");
 		} catch (SQLException e) {
 			e.printStackTrace();		
 		}finally {

@@ -18,7 +18,7 @@ public interface BoardDBService {
 	//수정 글 작성자만 수정
 	public void updateBoard(BoardDB board);
 	//삭제 글 작성자만 삭제
-	public void deleteBoard(int boardNo);
+	public void deleteBoard(BoardDB board);
 	//삭제 글 원본 이랑 댓글도 같이 삭제
 	public void delBoard(BoardDB board);
 	

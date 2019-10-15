@@ -11,8 +11,8 @@ public class LambdaExample06 {
 	// avg() 메소드 작성
 	public static double avg(ToIntFunction<Student> function) {
 		int sum = 0;
-		for (Student student : students) {
-			sum += function.applyAsInt(student);
+		for (Student sd : students) {
+			sum += function.applyAsInt(sd);
 		}
 		double avg = (double) sum / students.length;
 		return avg;

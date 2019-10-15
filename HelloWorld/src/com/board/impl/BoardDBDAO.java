@@ -155,8 +155,8 @@ public class BoardDBDAO {
 	
 	public List<BoardDB> getBoardList(){ //전체 조회
 		List<BoardDB> list = new ArrayList<>();
-		conn = DAO.getConnect();
-		String sql="select * from boards order by 1 desc";
+		conn = DAO.getConnect(); /* "select * from boards order by 1 desc"; */
+		String sql="select board_no, title, content, writer, creation_date, orig_no ,get_reply_cnt(b.board_no) as reply_count from boards b";
 		BoardDB bd = null;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -164,7 +164,7 @@ public class BoardDBDAO {
 			while(rs.next()) {
 				bd = new BoardDB();
 				bd.setBoardNo(rs.getInt("board_no"));
-				bd.setTitle(rs.getString("title"));
+				bd.setTitle(rs.getString("title")+"("+rs.getString("reply_count")+")");
 				bd.setContent(rs.getString("content"));
 				bd.setWriter(rs.getString("writer"));
 				bd.setCreationDate(rs.getString("creation_date"));
